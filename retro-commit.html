@@ -1,0 +1,406 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+  <foreignObject x="0" y="0" width="100%" height="100%">
+    <body xmlns="http://www.w3.org/1999/xhtml" style="margin:0;font-family:sans-serif;background:#0d1117;color:#c9d1d9;overflow:hidden;">
+
+      <!-- Sidebar (Menu) -->
+      <div id="sidebar" style="position:fixed;left:-250px;top:0;width:250px;height:100%;background:#010409;border-right:1px solid #21262d;padding:20px;box-sizing:border-box;transition:left 0.3s;z-index:100;">
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <strong style="color:#c9d1d9;">Menu</strong>
+          <a href="#" style="text-decoration:none;color:#c9d1d9;">these</a>
+          <a href="#" style="text-decoration:none;color:#c9d1d9;">will</a>
+          <a href="#" style="text-decoration:none;color:#c9d1d9;">be</a>
+          <a href="#" style="text-decoration:none;color:#c9d1d9;">real</a>
+          <a href="#" style="text-decoration:none;color:#c9d1d9;">links</a>
+          <a href="#" style="text-decoration:none;color:#c9d1d9;">one</a>
+          <a href="#" style="text-decoration:none;color:#c9d1d9;">day</a>
+
+        </div>
+      </div>
+
+      <!-- Overlay when sidebar is open -->
+      <div id="overlay" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:90;"></div>
+
+      <!-- Top navigation bar -->
+      <div style="position:sticky;top:0;display:flex;align-items:center;gap:20px;padding:10px 20px;border-bottom:1px solid #21262d;background:#0d1117;box-sizing:border-box;flex-wrap:wrap;">
+        <div id="menu" style="width:24px;height:24px;cursor:pointer;background:#161b22;display:flex;align-items:center;justify-content:center;border-radius:4px;">
+          <div style="width:15px;height:2px;background:#c9d1d9;position:relative;">
+            <div style="content:'';position:absolute;top:5px;width:15px;height:2px;background:#c9d1d9;"></div>
+            <div style="content:'';position:absolute;top:10px;width:15px;height:2px;background:#c9d1d9;"></div>
+          </div>
+        </div>
+        <div style="font-weight:bold;color:#c9d1d9;white-space:nowrap;">Friday I'm in Prod</div>
+        <nav style="display:flex;gap:20px;flex:1;flex-wrap:wrap;">
+
+        </nav>
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+        </div>
+      </div>
+
+      <!-- Main layout -->
+      <div style="display:flex;flex-direction:row;padding:20px;gap:40px;box-sizing:border-box;flex-wrap:wrap;">
+
+        <!-- Left Profile Column -->
+        <div style="min-width:300px;display:flex;flex-direction:column;align-items:center;gap:20px;flex-shrink:0;">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
+            <div style="width:120px;height:120px;border-radius:50%;background:url('https://avatars.githubusercontent.com/u/183404104?s=400&u=12286f150fa595744e11ba626b2c06f3626f5bda&v=4') no-repeat center/cover;border:2px solid #30363d;"></div>
+            <h2 style="margin:0;font-weight:normal;color:#c9d1d9;">🕹️play with time⌚</h2>
+          </div>
+          <button id="downloadScript" style="background:#21262d;color:#c9d1d9;padding:8px 16px;border:1px solid #30363d;cursor:pointer;border-radius:6px;">Download Script</button>
+
+          <div style="flex:1;"></div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div style="display:flex;flex-direction:row;gap:40px;flex:1;align-items:flex-start;flex-wrap:wrap;min-width:600px;">
+
+          <!-- Contribution Graph & Palette-->
+          <div style="display:flex;flex-direction:column;gap:20px;flex:1;min-width:400px;">
+
+            <!-- Contribution Graph Container -->
+            <div style="background:#0d1117;padding:20px;border-radius:6px;position:relative;border:1px solid #21262d;">
+              
+
+              <!-- Month labels -->
+              <div style="display:flex;align-items:center;justify-content:space-between;font-size:12px;color:#8b949e;margin-bottom:5px;padding:0 10px;">
+                <span>Dec</span><span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span>
+              </div>
+
+              <!-- Grid and day labels container -->
+              <div style="display:flex;">
+
+                <!-- Day labels -->
+                <div style="display:flex;flex-direction:column;justify-content:space-between;font-size:12px;color:#8b949e;margin-right:5px;height:100%;">
+                  <span style="visibility:hidden;">.</span>
+                  <span>Mon</span>
+                  <span>Wed</span>
+                  <span>Fri</span>
+                </div>
+
+                <!-- Grid Container -->
+                <div style="overflow:auto;">
+                  <div id="grid" style="display:grid;grid-template-columns:repeat(53, 11px);grid-gap:2px;"></div>
+                </div>
+              </div>
+
+              <!-- Palette -->
+              <div style="margin-top:10px;display:flex;align-items:center;gap:10px;font-size:12px;color:#8b949e;position:relative;">
+                <div style="color:#8b949e;">Less</div>
+                <div id="palette" style="display:flex;gap:5px;align-items:center;">
+                  <div data-color="#161b22" style="background-color:#161b22;width:11px;height:11px;cursor:pointer;border:1px solid #21262d;border-radius:2px;" title="No contributions"></div>
+                  <div data-color="#0e4429" style="background-color:#0e4429;width:11px;height:11px;cursor:pointer;border:1px solid #21262d;border-radius:2px;" title="Low"></div>
+                  <div data-color="#006d32" style="background-color:#006d32;width:11px;height:11px;cursor:pointer;border:1px solid #21262d;border-radius:2px;" title="Medium"></div>
+                  <div data-color="#26a641" style="background-color:#26a641;width:11px;height:11px;cursor:pointer;border:1px solid #21262d;border-radius:2px;" title="High"></div>
+                  <div data-color="#39d353" style="background-color:#39d353;width:11px;height:11px;cursor:pointer;border:1px solid #21262d;border-radius:2px;" title="Very High"></div>
+                </div>
+                <div style="color:#8b949e;">More</div>
+                <span style="margin-left:20px;color:#8b949e;">Selected:</span>
+                <span id="selectedColor" style="display:inline-block;width:11px;height:11px;background:#39d353;border:1px solid #21262d;border-radius:2px;vertical-align:middle;"></span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Year Navigation -->
+          <div style="display:flex;flex-direction:column;gap:10px;flex-shrink:0;">
+            <div data-year="2024" class="yearItem selectedYear">2024</div>
+            <div data-year="2023" class="yearItem">2023</div>
+            <div data-year="2022" class="yearItem">2022</div>
+            <div data-year="2021" class="yearItem">2021</div>
+            <div data-year="2020" class="yearItem">2020</div>
+            <div data-year="2019" class="yearItem">2019</div>
+            <div data-year="2018" class="yearItem">2018</div>
+            <div data-year="2017" class="yearItem">2017</div>
+            <div data-year="2016" class="yearItem">2016</div>
+            <div data-year="2015" class="yearItem">2015</div>
+            <div data-year="2014" class="yearItem">2014</div>
+          </div>
+        </div>
+      </div>
+
+      <style>
+        .yearItem {
+          font-size:14px;
+          color:#c9d1d9;
+          padding:5px 0;
+          cursor:pointer;
+          text-align:left;
+        }
+        .yearItem:hover {
+          text-decoration:underline;
+        }
+        .selectedYear {
+          background:#1f6feb;
+          color:#ffffff;
+          padding:5px 10px;
+          border-radius:6px;
+        }
+
+        a:hover {
+          text-decoration:underline;
+        }
+
+        @media (max-width:800px) {
+          nav {
+            flex-basis:100%;
+            order:2;
+          }
+          #menu {
+            order:1;
+          }
+        }
+      </style>
+
+      <script>
+        const rows = 7; // Days of the week (Sunday to Saturday)
+        const cols = 53; // Weeks in a year
+        let drawing = false;
+        let currentColor = '#39d353';
+
+        const state = Array.from({length: rows}, () => Array(cols).fill('#161b22'));
+        const gridEl = document.getElementById('grid');
+        const paletteEl = document.getElementById('palette');
+        const selectedColorEl = document.getElementById('selectedColor');
+        const downloadScriptBtn = document.getElementById('downloadScript');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+        const menu = document.getElementById('menu');
+        const yearItems = document.querySelectorAll('.yearItem');
+
+        // Create cells
+        for (let r = 0; r < rows; r++) {
+          for (let c = 0; c < cols; c++) {
+            const cell = document.createElement('div');
+            cell.style.width = '11px';
+            cell.style.height = '11px';
+            cell.style.cursor = 'pointer';
+            cell.style.backgroundColor = state[r][c];
+            cell.style.border = '1px solid #21262d';
+            cell.style.borderRadius = '2px';
+            cell.dataset.row = r;
+            cell.dataset.col = c;
+            gridEl.appendChild(cell);
+          }
+        }
+
+        // Painting logic
+        function paintCell(cell) {
+          const r = parseInt(cell.dataset.row, 10);
+          const c = parseInt(cell.dataset.col, 10);
+          if (state[r][c] !== currentColor) {
+            state[r][c] = currentColor;
+            cell.style.backgroundColor = currentColor;
+          }
+        }
+
+        gridEl.addEventListener('mousedown', (e) => {
+          if (e.target.dataset.row !== undefined) {
+            drawing = true;
+            paintCell(e.target);
+          }
+        });
+
+        gridEl.addEventListener('mousemove', (e) => {
+          if (drawing && e.target.dataset.row !== undefined) {
+            paintCell(e.target);
+          }
+        });
+
+        document.addEventListener('mouseup', () => { drawing = false; });
+
+        // Palette click handler
+        paletteEl.addEventListener('click', (e) => {
+          if (e.target.dataset.color) {
+            currentColor = e.target.dataset.color;
+            selectedColorEl.style.backgroundColor = currentColor;
+          }
+        });
+
+        // Download script button handler
+        downloadScriptBtn.addEventListener('click', () => {
+          const colorMap = {
+            '#161b22': 0, // No contributions
+            '#0e4429': 1, // Low
+            '#006d32': 2, // Medium
+            '#26a641': 3, // High
+            '#39d353': 4  // Very High
+          };
+
+          const currentDate = new Date();
+          const currentDay = currentDate.getDay(); // 0 (Sun) to 6 (Sat)
+          const startOfCurrentWeek = new Date(currentDate);
+          startOfCurrentWeek.setDate(currentDate.getDate() - currentDay);
+          startOfCurrentWeek.setHours(0, 0, 0, 0); // Set to midnight
+
+          const startDate = new Date(startOfCurrentWeek);
+          startDate.setDate(startOfCurrentWeek.getDate() - (cols - 1) * 7);
+
+          const DATES = [];
+          for (let c = 0; c < cols; c++) { // Iterate over each column (week)
+            for (let r = 0; r < rows; r++) { // Iterate over each row (day)
+              const commits = colorMap[state[r][c]] || 0; // Get commit count based on cell color
+              if (commits > 0) {
+                let cellDate = new Date(startDate);
+                cellDate.setDate(startDate.getDate() + c * 7 + r); // Add weeks and days
+
+                for (let i = 0; i < commits; i++) {
+                  const commitDate = new Date(cellDate);
+                  commitDate.setHours(9 + i); // Slight time variations
+                  const isoDate = commitDate.toISOString().split('T')[0] + 'T' + commitDate.toTimeString().split(' ')[0];
+                  DATES.push(`${isoDate}|1`);
+                }
+              }
+            }
+          }
+
+          const scriptContent = `
+#!/bin/bash
+
+# Navigate to the repository's root directory
+cd "$(git rev-parse --show-toplevel)"
+
+# Ensure we're on the 'master' branch
+current_branch=$(git branch --show-current)
+if [ "$current_branch" != "master" ]; then
+    echo "Switching to 'master' branch..."
+    git checkout master
+fi
+
+# Create commits
+DATES=(
+${DATES.map(d => `"${d}"`).join('\n')}
+)
+
+for DATE_INFO in "\${DATES[@]}"; do
+    DATE=$(echo "\$DATE_INFO" | cut -d'|' -f1)
+    COUNT=$(echo "\$DATE_INFO" | cut -d'|' -f2)
+
+    for ((i=1; i<=COUNT; i++)); do
+        echo "Creating commit $i for $DATE..."
+        GIT_AUTHOR_DATE="$DATE" GIT_COMMITTER_DATE="$DATE" git commit --allow-empty -m "Commit $i for $DATE"
+    done
+done
+
+# Push commits to 'master'
+echo "Attempting to push commits to 'master'..."
+git push origin master
+
+if [ $? -eq 0 ]; then
+    echo "Successfully pushed commits to 'master'."
+else
+    echo "Failed to push commits. Please check your remote repository settings and authentication."
+fi
+
+read -p "Press any key to exit..."
+`;
+
+          const blob = new Blob([scriptContent], {type: 'text/plain'});
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          const timestamp = new Date().getTime();
+          a.download = `retro_commits_${timestamp}.sh`;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url);
+        });
+
+        // Year selection logic
+        yearItems.forEach(item => {
+          item.addEventListener('click', () => {
+            yearItems.forEach(i => i.classList.remove('selectedYear'));
+            item.classList.add('selectedYear');
+            // Load year's data logic could go here
+          });
+        });
+
+        // menu logic
+        menu.addEventListener('click', () => {
+          if (sidebar.style.left === '0px') {
+            sidebar.style.left = '-250px';
+            overlay.style.display = 'none';
+          } else {
+            sidebar.style.left = '0px';
+            overlay.style.display = 'block';
+          }
+        });
+
+        overlay.addEventListener('click', () => {
+          sidebar.style.left = '-250px';
+          overlay.style.display = 'none';
+        });
+
+        // Drag & Drop Image logic
+        // Assuming these elements exist in the full environment as the original code suggests.
+        const imageContainer = document.getElementById('imageContainer');
+        const uploadedImage = document.getElementById('uploadedImage');
+        const imagePrompt = document.getElementById('imagePrompt');
+
+        let offsetX = 0, offsetY = 0, imgX = 0, imgY = 0, draggingImg = false;
+
+        if (imageContainer && uploadedImage && imagePrompt) {
+          imageContainer.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            imageContainer.style.borderColor = '#39d353';
+          });
+
+          imageContainer.addEventListener('dragleave', () => {
+            imageContainer.style.borderColor = '#30363d';
+          });
+
+          imageContainer.addEventListener('drop', (e) => {
+            e.preventDefault();
+            imageContainer.style.borderColor = '#30363d';
+            const file = e.dataTransfer.files[0];
+            if (file && file.type.startsWith('image/')) {
+              const reader = new FileReader();
+              reader.onload = (evt) => {
+                uploadedImage.src = evt.target.result;
+                uploadedImage.style.display = 'block';
+                imagePrompt.style.display = 'none';
+              };
+              reader.readAsDataURL(file);
+            }
+          });
+
+          uploadedImage.addEventListener('mousedown', (e) => {
+            e.preventDefault();
+            draggingImg = true;
+            offsetX = e.clientX - imgX;
+            offsetY = e.clientY - imgY;
+          });
+
+          document.addEventListener('mousemove', (e) => {
+            if (draggingImg) {
+              imgX = e.clientX - offsetX;
+              imgY = e.clientY - offsetY;
+              const rect = imageContainer.getBoundingClientRect();
+              const imgRect = uploadedImage.getBoundingClientRect();
+
+              if (imgRect.width > rect.width) {
+                if (imgX > 0) imgX = 0;
+                if (imgX < rect.width - imgRect.width) imgX = rect.width - imgRect.width;
+              } else {
+                imgX = (rect.width - imgRect.width) / 2;
+              }
+
+              if (imgRect.height > rect.height) {
+                if (imgY > 0) imgY = 0;
+                if (imgY < rect.height - imgRect.height) imgY = rect.height - imgRect.height;
+              } else {
+                imgY = (rect.height - imgRect.height) / 2;
+              }
+
+              uploadedImage.style.transform = `translate(${imgX}px, ${imgY}px)`;
+            }
+          });
+
+          document.addEventListener('mouseup', () => {
+            draggingImg = false;
+          });
+        }
+      </script>
+
+    </body>
+  </foreignObject>
+</svg>
